@@ -1,4 +1,4 @@
-module github.com/PretendoNetwork/nex-protocols-common-go/v2
+module github.com/Whatsauser/nex-protocols-common-go/v2
 
 go 1.24.0
 
