@@ -3,7 +3,7 @@ package utility_database
 import (
 	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/types"
-	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
+	common_globals "github.com/Whatsauser/nex-protocols-common-go/v2/globals"
 )
 
 // ClearPIDUniqueIDAssociations clears all unique ID associations for a given user

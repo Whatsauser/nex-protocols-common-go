@@ -3,8 +3,8 @@ package utility
 import (
 	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/types"
-	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
-	utility_database "github.com/PretendoNetwork/nex-protocols-common-go/v2/utility/database"
+	common_globals "github.com/Whatsauser/nex-protocols-common-go/v2/globals"
+	utility_database "github.com/Whatsauser/nex-protocols-common-go/v2/utility/database"
 	utility "github.com/PretendoNetwork/nex-protocols-go/v2/utility"
 	utility_types "github.com/PretendoNetwork/nex-protocols-go/v2/utility/types"
 )

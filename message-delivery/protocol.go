@@ -3,8 +3,8 @@ package message_delivery
 import (
 	"github.com/PretendoNetwork/nex-go/v2"
 	message_delivery "github.com/PretendoNetwork/nex-protocols-go/v2/message-delivery"
-	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
-	messaging_database "github.com/PretendoNetwork/nex-protocols-common-go/v2/messaging/database"
+	common_globals "github.com/Whatsauser/nex-protocols-common-go/v2/globals"
+	messaging_database "github.com/Whatsauser/nex-protocols-common-go/v2/messaging/database"
 )
 
 type CommonProtocol struct {

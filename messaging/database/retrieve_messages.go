@@ -6,7 +6,7 @@ import (
 	messaging_constants "github.com/PretendoNetwork/nex-protocols-go/v2/messaging/constants"
 	messaging_types "github.com/PretendoNetwork/nex-protocols-go/v2/messaging/types"
 
-	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
+	common_globals "github.com/Whatsauser/nex-protocols-common-go/v2/globals"
 )
 
 // RetrieveMessages retrieves the specified messages for the given recipient

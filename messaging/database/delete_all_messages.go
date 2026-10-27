@@ -5,7 +5,7 @@ import (
 	"github.com/PretendoNetwork/nex-go/v2/types"
 	messaging_constants "github.com/PretendoNetwork/nex-protocols-go/v2/messaging/constants"
 
-	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
+	common_globals "github.com/Whatsauser/nex-protocols-common-go/v2/globals"
 )
 
 // DeleteAllMessages deletes all messages for the given recipient

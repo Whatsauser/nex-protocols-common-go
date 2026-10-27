@@ -8,8 +8,8 @@ import (
 	matchmake_extension "github.com/PretendoNetwork/nex-protocols-go/v2/matchmake-extension"
 	notifications_constants "github.com/PretendoNetwork/nex-protocols-go/v2/notifications/constants"
 
-	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
-	"github.com/PretendoNetwork/nex-protocols-common-go/v2/matchmake-extension/database"
+	common_globals "github.com/Whatsauser/nex-protocols-common-go/v2/globals"
+	"github.com/Whatsauser/nex-protocols-common-go/v2/matchmake-extension/database"
 )
 
 type CommonProtocol struct {
