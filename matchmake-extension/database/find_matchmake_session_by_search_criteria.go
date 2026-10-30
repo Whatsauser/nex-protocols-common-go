@@ -255,7 +255,7 @@ func FindMatchmakeSessionBySearchCriteria(manager *common_globals.MatchmakingMan
 			// * Closest attribute
 			attribute1, ok := CheckAttributeVal(searchCriteria.Attribs)
 			if !ok {
-				common_globals.Logger.Warning("Attribs[1] could not be parsed, defaulting to 0")
+				common_globals.Logger.Warning("Attribs[1] could not be parsed, defaulting to 0 (constants.MatchmakeSelectionMethodNearestNeighbor)")
 			}
 
 			searchStatement += fmt.Sprintf(` ORDER BY abs(%d - ms.attribs[2])`, attribute1)
@@ -265,7 +265,7 @@ func FindMatchmakeSessionBySearchCriteria(manager *common_globals.MatchmakingMan
 			// TODO - Actually implement ranked matchmaking, using closest attribute at the moment
 			attribute1, ok := CheckAttributeVal(searchCriteria.Attribs)
 			if !ok {
-				common_globals.Logger.Warning("Attribs[1] could not be parsed, defaulting to 0")
+				common_globals.Logger.Warning("Attribs[1] could not be parsed, defaulting to 0 (constants.MatchmakeSelectionMethodBroadenRange)")
 			}
 
 			searchStatement += fmt.Sprintf(` ORDER BY abs(%d - ms.attribs[2])`, attribute1)
