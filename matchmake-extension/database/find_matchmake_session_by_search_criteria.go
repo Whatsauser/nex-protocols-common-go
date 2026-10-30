@@ -14,6 +14,19 @@ import (
 	match_making_types "github.com/PretendoNetwork/nex-protocols-go/v2/match-making/types"
 	pqextended "github.com/PretendoNetwork/pq-extended"
 )
+func CheckAttributeVal(attribs []types.String) (uint32, bool) {
+	if len(attribs) < 2 {
+		return 0, false
+	}
+
+	head, _, _ := strings.Cut(string(attribs[1]), ",")
+	n, err := strconv.ParseUint(strings.TrimSpace(head), 10, 32)
+	if err != nil {
+		return 0, false
+	}
+
+	return uint32(n), true
+}
 
 // FindMatchmakeSessionBySearchCriteria finds matchmake sessions with the given search criterias
 func FindMatchmakeSessionBySearchCriteria(manager *common_globals.MatchmakingManager, connection *nex.PRUDPConnection, searchCriterias []match_making_types.MatchmakeSessionSearchCriteria, resultRange types.ResultRange, sourceMatchmakeSession *match_making_types.MatchmakeSession, isAutoMatchmake bool) ([]match_making_types.MatchmakeSession, *nex.Error) {
@@ -233,10 +246,9 @@ func FindMatchmakeSessionBySearchCriteria(manager *common_globals.MatchmakingMan
 			searchStatement += ` ORDER BY RANDOM()`
 		case constants.MatchmakeSelectionMethodNearestNeighbor:
 			// * Closest attribute
-			attribute1, err := strconv.ParseUint(string(searchCriteria.Attribs[1]), 10, 32)
-			if err != nil {
-				common_globals.Logger.Error(err.Error())
-				continue
+			attribute1, ok := CheckAttributeVal(searchCriteria.Attribs)
+			if !ok {
+				common_globals.Logger.Warning("Attribs[1] could not be parsed, defaulting to 0")
 			}
 
 			searchStatement += fmt.Sprintf(` ORDER BY abs(%d - ms.attribs[2])`, attribute1)
@@ -244,10 +256,9 @@ func FindMatchmakeSessionBySearchCriteria(manager *common_globals.MatchmakingMan
 			// * Ranked
 
 			// TODO - Actually implement ranked matchmaking, using closest attribute at the moment
-			attribute1, err := strconv.ParseUint(string(searchCriteria.Attribs[1]), 10, 32)
-			if err != nil {
-				common_globals.Logger.Error(err.Error())
-				continue
+			attribute1, ok := CheckAttributeVal(searchCriteria.Attribs)
+			if !ok {
+				common_globals.Logger.Warning("Attribs[1] could not be parsed, defaulting to 0")
 			}
 
 			searchStatement += fmt.Sprintf(` ORDER BY abs(%d - ms.attribs[2])`, attribute1)
@@ -270,13 +281,7 @@ func FindMatchmakeSessionBySearchCriteria(manager *common_globals.MatchmakingMan
 				continue
 			}
 
-			if searchCriteria.Attribs[1] != "" {
-				attribute1, err := strconv.ParseUint(string(searchCriteria.Attribs[1]), 10, 32)
-				if err != nil {
-					common_globals.Logger.Error(err.Error())
-					continue
-				}
-
+			if attribute1, ok := CheckAttributeVal(searchCriteria.Attribs); ok {
 				// TODO - Should the attribute and the progress score actually weigh the same?
 				searchStatement += fmt.Sprintf(` ORDER BY abs(%d - ms.attribs[2] + %d - ms.progress_score)`, attribute1, sourceMatchmakeSession.ProgressScore)
 			}
