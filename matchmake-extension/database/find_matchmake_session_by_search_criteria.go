@@ -14,9 +14,12 @@ import (
 	match_making_types "github.com/PretendoNetwork/nex-protocols-go/v2/match-making/types"
 	pqextended "github.com/PretendoNetwork/pq-extended"
 )
+
 /* 
 CheckAttributeVal checks the attributes given to make sure that they are valid, 
-this prevents games like Wii Sports Club from making the library throw a syntax error.
+this prevents games like Wii Sports Club from making the library throw a syntax 
+error due to it being not a regular number.
+"strconv.ParseUint: parsing "0,4294967295": invalid syntax"
 */
 func CheckAttributeVal(attribs []types.String) (uint32, bool) {
 	if len(attribs) < 2 {
